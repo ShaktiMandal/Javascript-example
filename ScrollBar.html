@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            ScrollBar
+        </title>
+    </head>
+    <body>
+        <h1>Load data when you scroll</h1>
+       
+        <div id="ContainerId" class="Container">
+            <div id=ProgressBar class="ProgressBar"></div>
+            <ul id="ContainerList" class="ContainerList">
+
+
+            </ul>
+        </div>
+      
+        <script src="Scrollbar.js"></script>
+        <style>
+            body{
+                margin: 0px;
+                padding: 10px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            .Container
+            {
+                height: 500px;
+                width: 70%;
+            }
+
+            .ContainerList
+            {
+                height: inherit;
+                overflow-y: scroll;
+                list-style: none;
+                padding: 0px;
+            }
+
+            .ContainerList li
+            {
+                margin-bottom: 10px;
+                font-size: 20px;
+                font-weight: bold;
+                width: 100%;
+            }
+            .ProgressBar
+            {
+                margin-top: 2px;
+                margin-left: 0px;
+                border-bottom: 5px solid red;
+                background-color: red;
+                width: 0;
+                position: relative;
+                transition: width 0.5s;
+                text-align: center;
+            }
+
+        </style>
+    </body>
+</html>

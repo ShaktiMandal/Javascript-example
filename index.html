@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div>
+        <input class="InputClass" type="text" id="InputText">
+        <button id="searchButton">Search</button>       
+    </div>
+    <div id="PeopleContainer">
+        <ul class="listOfPeople" id="listOfPeople">
+
+        </ul>
+    </div>
+    <style >
+        body{
+            margin: 0px;
+            padding: 10px;
+        }
+
+        .InputClass
+        {
+            border: none;
+            border-bottom: 1px solid black;
+            width: 30%;
+            height:  30px;
+            outline: none;            
+            background: transparent
+        }
+
+        button{
+            height: 35px;
+            width: 100px;
+            color: white;
+            background-color: slategray;
+            outline: none;
+            border: none;
+            margin-left: 5px;
+        }
+
+        div{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .listOfPeople
+        {
+            list-style: none;
+            padding: 0px;
+            width: 30%;
+            height: 500px;
+            overflow: auto;
+        }
+
+    </style>
+    <script src="index.js">
+
+    </script>
+</body>
+  
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <div class="mainContainer">
+            <div class="displayArea">
+                <div class="inputSection">
+                    <input type="text" placeholder="Enter pick up point" id="pickupPointId"/>    
+                    <input type="text" placeholder="Enter dropping point" id="droppingPointId"/>  
+                    <input type="button" value="Search" id="searchButtonId"/>
+                </div>
+                <div class="activeRiders" id= "activeRiders">
+                    <ul class="activeRiderList" id= "activeRiderList">
+
+                    </ul>
+                </div>                
+            </div>
+        </div>
+        <script src="./simpleRide.js"></script>
+        <style>
+            body{
+                margin: 0px;
+                padding: 0px;
+                height: 100vh;
+                font-family: sans-serif, arial, helvetica;
+            }
+            .mainContainer{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 100vh;
+                width: 100%;
+            }
+            .displayArea{
+                display: grid;
+                grid-template-rows: 40% 50%;
+                background-color: lightgray;
+                width: 30%;               
+                height: 500px;
+            }
+            .activeRiders
+            {
+                height: 300px;
+                overflow: scroll;
+            }
+            .inputSection
+            {
+                display: grid;
+                grid-template-rows: 30% 30% 40%;
+                row-gap: 5px;
+                background: rgb(230, 230, 230);
+
+            }
+
+            input[type="text"]
+            {
+                    height: 30px;
+                    width: 70%;
+                    margin: auto;
+                    border: none;
+                    background: transparent;
+                    border-bottom: 2px solid rgb(172, 50, 50);
+                    outline: none;
+            }
+          
+            input[type="button"]
+            {
+                width: 70%;
+                background: rgb(172, 50, 50);
+                color: white;
+                border: none;
+                outline: none;
+                height: 30px;
+                margin: auto;   
+                border-radius: 10px;
+            }
+
+            .activeRiderList
+            {
+                list-style: none;
+                padding: 0px;
+                margin: 0px;
+            }
+
+            .activeRiderList li
+            {
+                width: 80%;
+                margin: auto;
+                padding: 5px;
+                margin-bottom: 5px;
+                text-align: center;
+                box-shadow: 2px 5px 3px rgb(207, 198, 198);
+            }
+        </style>
+    </body>
+    <footer>
+
+    </footer>
+</html>
