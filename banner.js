@@ -13,7 +13,7 @@
         {"x": "Portuguese", "value": 229000000, category: "Indo-European"},
         {"x": "French", "value": 229000000, category: "Indo-European"},
         {"x": "Hausa", "value": 150000000, category: "Afro-Asiatic"},
-        {"x": "Punjabi", "value": 148000000, category: "Indo-European"},
+        {"x": "unjabi", "value": 148000000, category: "Indo-European"},
         {"x": "Japanese", "value": 129000000, category: "Japonic"},
         {"x": "German", "value": 129000000, category: "Indo-European"},
         {"x": "Persian", "value": 121000000, category: "Indo-European"}
