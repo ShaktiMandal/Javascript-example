@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progress Bar</title>
+
+    <style>
+
+        body{
+            padding: 0;
+            margin: 0;
+        }
+        .container{
+            height: 100vh;
+            width: 100%;
+            display: grid;
+            place-items:left;
+            text-align: center;
+            position: relative;
+        }
+
+        .progressbar{
+            height: 25px;
+            border-radius: 25px;           
+            position: absolute;
+        }
+
+        .completetion
+        {
+            position: relative;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="completetion" id="completion"></div>
+        <div class="progressbar" id="progressbar"></div>
+    </div>
+    <script src="progressbar.js"></script>
+</body>
+</html>
