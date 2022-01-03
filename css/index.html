@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            css testing
+        </title>
+    </head>
+    <body>
+        <div>
+            <button class="close">
+              
+            </button>
+            <ol>
+                <li>BFE.dev</li>
+                <li>JavaScript</li>
+                <li>CSS</li>
+                <li>System Design</li>
+              </ol>
+        </div>
+
+        <style>
+            ol {
+  margin-left: -13px;
+  list-style: none;
+  counter-reset: li;
+}
+
+li:before {
+  color: #f44336;
+  counter-increment: li;
+  content: counters(li,".")" ";
+}
+
+.close {
+    border: 1px solid #f44336;
+    border-radius: 50%;
+    position: relative;
+    width: 50px;
+    height: 50px;
+}
+
+.close::before,
+.close::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  background-color: #aaa;
+  width: calc(100% * 3 / 4);
+  height: 2px;
+}
+
+.close::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.close::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+
+        </style>
+    </body>
+    <footer>
+
+    </footer>
+</html>

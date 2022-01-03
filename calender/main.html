@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>this is main window</h1>
+    <button id="parent">Open child</button>
+    <lable id="labelId"></lable>
+
+    <script>
+      let test1 = 500;
+      let test1 = 600;
+      const btn = document.getElementById("parent");
+      const label = document.getElementById("labelId");
+      btn.addEventListener("click", () => {
+        const temp = window.open("./calender.html", 'window',
+        `width=800,height=600,top=${test1},left=${test2}`);
+        if (temp) {
+       
+          function focusPopup() {
+          if (temp && !temp.closed) {
+            temp.focus();
+          }
+            }
+          document.onmousedown = focusPopup;
+            document.onkeyup = focusPopup;
+            document.onmousemove = focusPopup;
+
+        }
+      });
+
+      window.addEventListener("message", function (result) {
+        console.log("hey result", result);
+      });
+    </script>
+  </body>
+</html>
