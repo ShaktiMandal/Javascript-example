@@ -18,8 +18,7 @@ body{
 
 .container-carousel
 {
-    display: flex;
-    width: 100%;  
+    display: flex; 
     Height: 450px;
 }
 
