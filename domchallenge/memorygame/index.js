@@ -4,6 +4,8 @@ const configure = document.getElementById('configure');
 const startBtn = document.getElementById('startgame');
 const scoreElement = document.getElementById('score');
 const highScoreElement = document.getElementById('highscore');
+const blocks = document.getElementById('blocks');
+
 
 let userSelectionBlocks = [];
 let systemSelectionBlocks = [];
@@ -32,11 +34,11 @@ const onSelection = (event) => {
             score = score + 1;
             level = level + 1;
             scoreElement.textContent = score.toString();
-            highScoreElement.textContent = highScore.toString();
             systemSelectionBlocks = [];
             userSelectionBlocks = [];
             highLightBlock();
         }
+        startBtn.disabled = true;
    }
    else
    {
@@ -56,7 +58,7 @@ const onSelection = (event) => {
             localStorage.setItem("highScore", highScore);
             highScore = 0;
         }
-        startBtn.disable = false;
+        startBtn.disabled = false;
    }
 }
 const configureGameBoard  = () => {
@@ -64,6 +66,7 @@ const configureGameBoard  = () => {
     let noOfBlock = inputblock.value;
     if(noOfBlock > 2)
     {
+        blocks.classList.add('displayblocksarea');
         for(let index = 0; index < noOfBlock; index++)
         {
             const div = document.createElement('div');
@@ -100,10 +103,31 @@ const onStartGame = () => {
     highLightBlock();
 }
 
+const handleInput  = (event) => {
+
+    if(event.target.value.length === 0)
+    {
+        blocks.classList.remove('displayblocksarea');
+    }
+}
+
 const initialize = () => {
     configure.addEventListener('click', configureGameBoard);
     startBtn.addEventListener('click', onStartGame);
-    localStorage.setItem("highScore", highScore);
+    inputblock.addEventListener('input', handleInput);
+
+    highScoreElement.textContent = 0;
+
+    if(!localStorage.getItem('highScore') )
+    {
+        localStorage.setItem("highScore", highScore);
+    }
+    else
+    {
+        highScoreElement.textContent = localStorage.getItem('highScore')
+    }
+
+    scoreElement.textContent = 0;
 }
 
 initialize();
