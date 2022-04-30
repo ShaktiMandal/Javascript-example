@@ -1,0 +1,11 @@
+.grid {
+    display: grid;
+    grid-template-columns: repeat(10, 50px);
+    grid-template-rows: repeat(10, 50px);
+    height: 500px;
+    width: 500px;
+}
+
+.grid div {
+    border: 1px solid gray;
+}
