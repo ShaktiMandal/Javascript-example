@@ -6,7 +6,7 @@ const meetingData = [
     title: "#TeamDevkode",
   },
   {
-    startTime: "4:30",
+    startTime: "5:50",
     endTime: "7:30",
     color: "#f6501e",
     title: "#TeamDevkode",
@@ -92,6 +92,12 @@ const meetingData = [
   {
     startTime: "20:30",
     endTime: "22:30",
+    color: "#029be5",
+    title: "#TeamDevkode",
+  },
+  {
+    startTime: "00:30",
+    endTime: "1:00",
     color: "#029be5",
     title: "#TeamDevkode",
   },
@@ -187,29 +193,70 @@ const getNoOfOverlappingSlots = (item, overlappingSlots) => {
   return noOfOverlapItems;
 };
 const createEventSlot = (item, noOfOverlaps, startTime, endTime) => {
-  let temp = 20 + 10 * noOfOverlaps;
+  //calculating the position for each time slot based on 
+  //total no of overlapping slot.
+  let estimatedTimeSlotPosition = 20 + (20 * noOfOverlaps);
   const div = document.createElement("div");
   div.classList.add("timeslot");
 
   div.style.top = startTime.toString() + "px";
-  div.style.marginLeft = noOfOverlaps === 0 ? "20%" : `${temp}%`;
-  div.style.height = (endTime - startTime).toString() + "px";
+  //if no overlap , place the slot 20% from the left margin
+  //In case of having overlap item, place the slot based on the 
+  //no of overlapping slots.
+  div.style.marginLeft = noOfOverlaps === 0 ? "20%" : `${estimatedTimeSlotPosition}%`;
+  div.style.height = (endTime - startTime - 5).toString() + "px";
+  div.style.width = `${(100 - estimatedTimeSlotPosition)}%`;
   div.style.backgroundColor = item.color;
+  //Puttng the border on ovelap time slots 
+  //as per the requirement, thus adding border only when 
+  // the is overlapping
   if (noOfOverlaps > 0) {
     div.style.border = "1px solid white";
   }
 
   return div;
 };
+
+const AddEventDetails = (eventSlotElement, item, startTime, endTime) =>{
+  const h1Element = document.createElement("h1");
+  h1Element.textContent = item.title;
+  const h2Element = document.createElement("h2");
+
+  // add time in the event details. 
+  //1200 is considerig PM, thus less than 1200 considering as AM
+  //otheriwse PM
+  if (startTime < 1200) {
+    h2Element.textContent = item.startTime + " AM - ";
+  } else {
+    h2Element.textContent = item.startTime + " PM - ";
+  }
+
+  if (endTime < 1200) {
+    h2Element.textContent = h2Element.textContent + item.endTime + " AM";
+  } else {
+    h2Element.textContent = h2Element.textContent + item.endTime + " PM";
+  }
+
+  const fragment = document.createDocumentFragment();
+
+  fragment.appendChild(h1Element);
+  fragment.appendChild(h2Element);
+  eventSlotElement.appendChild(fragment);
+}
 const createMeetingArea = () => {
   let overlappingMeetingSlots = [];
   meetingData.forEach((item) => {
+
+    // no of overlapping is required to decide the layout 
+    // of overlapping time slots
     let noOfOverlaps = getNoOfOverlappingSlots(item, overlappingMeetingSlots);
     overlappingMeetingSlots.push(item);
 
+    // get the evnt time slot 
     let startTime = parseInt(item.startTime.replace(":", ""));
     let endTime = parseInt(item.endTime.replace(":", ""));
 
+    //create the time slot
     let eventSlotElement = createEventSlot(
       item,
       noOfOverlaps,
@@ -217,25 +264,7 @@ const createMeetingArea = () => {
       endTime
     );
 
-    const h1Element = document.createElement("h1");
-    h1Element.textContent = item.title;
-    const h2Element = document.createElement("h2");
-
-    if (startTime < 1200) {
-      h2Element.textContent = item.startTime + " AM - ";
-    } else {
-      h2Element.textContent = item.startTime + " PM - ";
-    }
-
-    if (endTime < 1200) {
-      h2Element.textContent = h2Element.textContent + item.endTime + " AM";
-    } else {
-      h2Element.textContent = h2Element.textContent + item.endTime + " PM";
-    }
-
-    eventSlotElement.appendChild(h1Element);
-    eventSlotElement.appendChild(h2Element);
-
+    AddEventDetails(eventSlotElement, item, startTime, endTime);
     calenderContainer.appendChild(eventSlotElement);
   });
 };
