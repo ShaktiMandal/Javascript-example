@@ -9,14 +9,20 @@
 </head>
 <body>
     <div class="container">
-         <div class="progressbar-container" id="ProgreesbarContainer">
+         <div class="progressbar-container" id="Progreesbarcontainer">
             <div class="progressbar" id="progressbar"></div>
         </div>
         <div>
-            <button class="run" id="run"></button>
+            <button class="start-btn" id="startbtn"></button>
         </div>
     </div>
     <style>
+        .container{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 20px;
+        }
         .prgressbar-container{
             width: 100%;
             height: 100vh;
@@ -34,10 +40,9 @@
 
         .progressbar{
             height: 50px;
-            transition: 0.5s ease-in;
         }
 
-        .run:hoevr
+        .start-btn:hoevr
         {
             cursor: pointer;
         }

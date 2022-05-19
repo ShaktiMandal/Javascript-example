@@ -1,50 +1,48 @@
+let timeIntervalHandler;
+let noOfTimeToRun = 0;
+let currentWidth = 0; //current width set to 0 of the progress bar
+let progressbarWidth = 100; //considering 100% width with respect to its container
 const progressBar = document.getElementById("progressbar");
-const ProgreesbarContainer = document.getElementById("ProgreesbarContainer");
-let noOfTimeRun = 0;
-const startBtn = document.getElementById('run');
+const ProgreesbarContainer = document.getElementById("Progreesbarcontainer");
+const startBtn = document.getElementById("startbtn");
 
 const runProgressBar = () => {
-    const progressbarWidth = ProgreesbarContainer.style.width.substring(0, ProgreesbarContainer.style.width.length - 2);
-    progressBar.style.width = "0px";
-    const toBeIncrementedWidth = Math.ceil(parseInt(progressbarWidth) / 3);
-    const intervalHandler  = setInterval(()=> {
-        
-        let currentwidth = parseInt(progressBar.style.width.substring(0, progressBar.style.width.length - 2)) + toBeIncrementedWidth;
-        progressBar.style.width = currentwidth + "px";
-        progressBar.style.background = "green";
-        if(currentwidth >= progressbarWidth)
-        {
-            clearInterval(intervalHandler);
-            const timedOutHandler = setTimeout(() => {
-                progressBar.style.background = "";
-                progressBar.style.width = "0px";
-                clearTimeout(timedOutHandler);
-                while(noOfTimeRun > 1)
-                {
-                    console.log("call" + noOfTimeRun);
-                    noOfTimeRun = noOfTimeRun - 1;
-                    runProgressBar();
-                }
-            },1000)
-            
-        }
-    }, 3)
-}
+    //keeping check whether current width is 
+    //crosssing the progressbar width, if so 
+    //we have already covered the width
+    // thus reset the progress bar current 
+    //width to 0
+  if (currentWidth >= progressbarWidth) {
+    clearInterval(timeIntervalHandler);
+
+    // if noOfTimeToRun become 0,
+    // we have reached to
+    // the last progress bar process
+    // thus keeping current width as is
+    //this will keep the progressbar filled.
+    if (noOfTimeToRun - 1 > 0) {
+      currentWidth = 0;
+    }
+    //reducing the noOfTimeToRun 
+    //each time it completes one process
+    noOfTimeToRun = noOfTimeToRun - 1;
+    startBtn.textContent = noOfTimeToRun <= 0 ? "Run" : `Run ${noOfTimeToRun}`;
+  } else {
+    currentWidth = currentWidth + 1;
+    progressBar.style.width = currentWidth + "%";
+    progressBar.style.background = "blue";
+  }
+};
 
 const startProgressBar = (event) => {
-        noOfTimeRun = noOfTimeRun + 1;
-        if(noOfTimeRun === 1) 
-        {
-            runProgressBar();
-        }
-}
+  noOfTimeToRun = noOfTimeToRun + 1;
+  startBtn.textContent = "Run" + ` ${noOfTimeToRun}`;
+  timeIntervalHandler = setInterval(runProgressBar, 50);
+};
 
-const initialize = () =>
-{
-    startBtn.textContent = "Run";
-    startBtn.addEventListener('click', startProgressBar);
-    ProgreesbarContainer.style.width = "550px";
-    ProgreesbarContainer.style.height = "50px";
-}
-
-initialize();
+(() => {
+  startBtn.textContent = "Run";
+  startBtn.addEventListener("click", startProgressBar);
+  ProgreesbarContainer.style.width = "550px";
+  ProgreesbarContainer.style.height = "50px";
+})();
