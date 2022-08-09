@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="main__container" class="main__container">
+        <section class="action__area">
+            <button id="pauseAndPlayBtn" class="pauseplay__btn"></button>
+        </section>
+        <section class="imgscroll__area">
+            <div class="first__row" id="first__row">
+
+            </div>
+            <div class="second__row" id="second__row">
+
+            </div>
+        </section>
+        <section class="imgdisplay__area" id="imgdisplay__area">
+            
+        </section>
+    </div>
+    <script src="index.js"></script>
+    <style>
+        body{
+            padding: 0;
+            margin: 0;
+            height: 100vh;
+            width: 100%;
+            display: grid;
+            place-items: center;
+            background: lightgray;
+
+        }
+        .main__container
+        {
+            width: 400px;
+            height: 500px;
+            border: none;
+            outline: none;
+            border-radius: 5px;
+            background-color: rgb(219 219 219 / 70%);  
+            ;
+        }
+        .imgscroll__area
+        {
+            width: inherit;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .first__row
+        {
+            margin: 5px;
+            display: grid;
+            grid-template-columns: repeat(13, 100px);
+            column-gap: 5px;
+            overflow: hidden;
+            overflow-x: hidden;
+        }
+
+        .second__row
+        {
+            margin: 5px;
+            display: grid;
+            column-gap: 5px;
+            grid-template-columns: repeat(11, 100px);
+            overflow: hidden;
+            overflow-x: hidden;
+        }
+
+        .img__area {
+            opacity: 50%;
+        } 
+
+        .action__area
+        {
+            float: right;
+            margin: 10px;
+        }
+
+        .action__area button
+        {
+            border: none;
+            outline: none;
+            padding: 10px;
+            width: 100px;
+            background: lightgray;
+            border-radius: 5px;;
+        }
+
+        .action__area button:hover
+        {
+            cursor: pointer;
+        }
+        
+        .first__row div,
+        .second__row div{
+            transition: margin-left 2s ease-out;
+        }
+
+        .imgdisplay__area
+        {
+            padding: 5px;
+        }
+
+        .imgdisplay__area img
+        {
+            width: 100%;
+        }
+
+   
+
+
+    </style>
+</body>
+</html>
